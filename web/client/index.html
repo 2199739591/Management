@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet" href="../assets/lib/bootstrap.css">
+<link rel="stylesheet" href="/assets/lib/layui/css/layui.css">
+<link rel="stylesheet" href="../assets/css/client/index.css">
+</head>
+
+<body>
+
+
+  <div class="layui-card">
+    <div class="layui-card-header">
+      <span>客户管理</span>
+      <form class="layui-form" action="">
+        <div class="layui-form-item">
+          <div class="layui-inline">
+            <label class="layui-form-label">用户类型</label>
+            <div class="layui-input-inline">
+              <select class="selecttype" name="clientType" lay-verify="required" lay-search="" lay-filter="p">
+            <option value="0">全部客户</option>
+            <option value="1">普通客户</option>
+            <option value="2">vip客户</option>
+          </select>
+            </div>
+          </div>
+        </div>
+      </form>
+      <!-- <div class="layui-form-item">
+        <label class="layui-form-label">选择框</label>
+        <div class="layui-input-block">
+          <select class="selecttype" name="clientType" lay-verify="required">
+            <option value="0">全部客户</option>
+            <option value="1">普通客户</option>
+            <option value="2">vip客户</option>
+          </select>
+        </div>
+      </div> -->
+      <button class="layui-btn layui-btn-normal layui-btn-sm btnAddCate">添加客户</button>
+    </div>
+    <div class="layui-card-body">
+      <table class="layui-table">
+        <colgroup>
+          <col />
+          <col />
+          <col />
+          <col />
+        </colgroup>
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>姓名</th>
+            <th>类型</th>
+            <th>电话</th>
+            <th>地址</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script type="text/html" id="tpl-table">
+    {{each data}}
+    <tr>
+      <td>{{$value.id}}</td>
+      <td>{{$value.name}}</td>
+      <td>{{$value.type}}</td>
+      <td>{{$value.telnumber}}</td>
+      <td>{{$value.address}}</td>
+      <td>
+        <button class="layui-btn layui-btn-xs btnEditCate" data-id="{{$value.id}}">编辑</button>
+        <button class="layui-btn layui-btn-danger layui-btn-xs btnDelCate" data-id="{{$value.id}}">删除</button>
+      </td>
+    </tr>
+    {{/each}}
+  </script>
+
+  <script type="text/html" id="dialog-add">
+    <form class="layui-form" id="form-add">
+      <!-- <div class="layui-form-item">
+        <label class="layui-form-label">客户id</label>
+        <div class="layui-input-block">
+          <input type="text" name="id" required lay-verify="required" placeholder="请输入客户id" autocomplete="off" class="layui-input">
+        </div>
+      </div> -->
+      <div class="layui-form-item">
+        <label class="layui-form-label">客户姓名</label>
+        <div class="layui-input-block">
+          <input type="text" name="name" required lay-verify="required" placeholder="请输入客户姓名" autocomplete="off" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">客户类型</label>
+        <div class="layui-input-block">
+          <input type="text" name="type" placeholder="请输入客户类型(可填com/vip)" autocomplete="off" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">客户电话</label>
+        <div class="layui-input-block">
+          <input type="text" name="telnumber" placeholder="请输入客户电话" autocomplete="off" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">客户地址</label>
+        <div class="layui-input-block">
+          <input type="text" name="address" placeholder="请输入客户地址" autocomplete="off" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <div class="layui-input-block">
+          <button class="layui-btn" lay-submit lay-filter="formDemo">确认添加</button>
+          <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+      </div>
+    </form>
+  </script>
+
+  <script type="text/html" id="dialog-edit">
+    <form class="layui-form" id="form-edit">
+      <input type="hidden" name="id">
+      <div class="layui-form-item">
+        <label class="layui-form-label">客户姓名</label>
+        <div class="layui-input-block">
+          <input type="text" name="name" required lay-verify="required" placeholder="请输入客户姓名" autocomplete="off" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">客户类型</label>
+        <div class="layui-input-block">
+          <input type="text" name="type" required lay-verify="required" placeholder="请输入客户类型(可填com/vip)" autocomplete="off" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">客户电话</label>
+        <div class="layui-input-block">
+          <input type="text" name="telnumber" required lay-verify="required" placeholder="请输入客户电话" autocomplete="off" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">客户地址</label>
+        <div class="layui-input-block">
+          <input type="text" name="address" required lay-verify="required" placeholder="请输入客户地址" autocomplete="off" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <div class="layui-input-block">
+          <button class="layui-btn" lay-submit lay-filter="formDemo">确认修改</button>
+        </div>
+      </div>
+    </form>
+  </script>
+
+  <button class="layui-btn btn-exporttable">输出报表</button>
+
+  <script src="/assets/lib/layui/layui.all.js"></script>
+  <script src="/assets/lib/jquery.js"></script>
+  <script src="/assets/js/ajaxPre.js"></script>
+  <script src="/assets/lib/template-web.js"></script>
+  <script src="../assets/js/client/index.js"></script>
+
+</body>
+
+</html>

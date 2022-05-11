@@ -1,0 +1,43 @@
+/* .layui-form-item {
+  display: inline-block;
+} */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f2f3f5;
+  padding: 15px;
+}
+
+.layui-card .layui-card-header span {
+  font-size: 15px
+}
+
+.layui-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-exporttable {
+  float: right;
+}
+
+.layui-form-label {
+  margin-top: 18px;
+  /* vertical-align: center; */
+}
+
+
+/* 
+.layui-form-label {
+  width: 100px;
+}
+
+.layui-input {
+  width: 90%;
+} */

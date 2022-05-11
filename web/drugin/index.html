@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet" href="../assets/lib/bootstrap.css">
+<link rel="stylesheet" href="/assets/lib/layui/css/layui.css">
+<link rel="stylesheet" href="../assets/css/drugin/index.css">
+</head>
+
+<body>
+
+  <div class="layui-card">
+    <div class="layui-card-header">
+      <span>药品入库信息</span>
+      <form class="layui-form" id="form-search">
+        <div class="layui-form-item">
+          <div class="layui-inline">
+            <label class="layui-form-label">名称</label>
+            <div class="layui-input-inline">
+              <input type="text" name="name" class="layui-input" id="input-searchbyid" autocomplete="off">
+            </div>
+          </div>
+          <div class="layui-inline">
+            <label class="layui-form-label">时间</label>
+            <div class="layui-input-inline">
+              <input type="text" class="layui-input" name="date" id="test1" autocomplete="off">
+            </div>
+          </div>
+          <div class="layui-inline">
+            <div class="layui-input-inline">
+              <button class="layui-btn" lay-submit>搜索</button>
+            </div>
+          </div>
+        </div>
+      </form>
+
+
+      <div class="layui-input-inline ">
+        <button class="layui-btn btn-searchall ">查看全部</button>
+      </div>
+    </div>
+  </div>
+  <div class="layui-card-body ">
+    <table class="layui-table ">
+      <colgroup>
+        <col />
+        <col />
+        <col />
+        <col />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>药品名称</th>
+          <th>入库时间</th>
+          <th>药品数量</th>
+
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
+  </div>
+  </div>
+
+  <script type="text/html " id="tpl-table">
+    {{each data}}
+    <tr>
+      <td>{{$value.id}}</td>
+      <td>{{$value.name}}</td>
+      <td>{{$value.date}}</td>
+      <td>{{$value.count}}</td>
+    </tr>
+    {{/each}}
+  </script>
+
+  <script type="text/html " id="dialog-add ">
+    <form class="layui-form " id="form-add ">
+      <!-- <div class="layui-form-item ">
+        <label class="layui-form-label ">id</label>
+        <div class="layui-input-block ">
+          <input type="text " name="id " required lay-verify="required " placeholder="请输入药品id " autocomplete="off " class="layui-input ">
+        </div>
+      </div> -->
+      <div class="layui-form-item ">
+        <label class="layui-form-label ">名称</label>
+        <div class="layui-input-block ">
+          <input type="text " name="name " required lay-verify="required " placeholder="请输入药品名称 " autocomplete="off " class="layui-input ">
+        </div>
+      </div>
+      <!-- <div class="layui-form-item ">
+        <label class="layui-form-label ">入库日期</label>
+        <div class="layui-input-block ">
+          <input type="text " name="inDate " placeholder="请输入药品 " autocomplete="off " class="layui-input ">
+        </div>
+      </div> -->
+      <div class="layui-form-item ">
+        <label class="layui-form-label ">数量</label>
+        <div class="layui-input-block ">
+          <input type="text " name="count " placeholder="请输入药品数量 " autocomplete="off " class="layui-input ">
+        </div>
+      </div>
+
+      <div class="layui-form-item ">
+        <div class="layui-input-block ">
+          <button class="layui-btn " lay-submit lay-filter="formDemo ">确认入库</button>
+          <button type="reset " class="layui-btn layui-btn-primary ">重置</button>
+        </div>
+      </div>
+    </form>
+  </script>
+
+  <script type="text/html " id="dialog-edit ">
+    <form class="layui-form " id="form-edit ">
+      <input type="hidden " name="id ">
+      <div class="layui-form-item ">
+        <label class="layui-form-label ">药品名称</label>
+        <div class="layui-input-block ">
+          <input type="text " name="name " required lay-verify="required " autocomplete="off " class="layui-input ">
+        </div>
+      </div>
+      <div class="layui-form-item ">
+        <label class="layui-form-label ">出库数量</label>
+        <div class="layui-input-block ">
+          <input type="text " name="count " required lay-verify="required " placeholder="请输入出库数量 " autocomplete="off " class="layui-input ">
+        </div>
+      </div>
+
+      <div class="layui-form-item ">
+        <div class="layui-input-block ">
+          <button class="layui-btn " lay-submit lay-filter="formDemo ">确认出库</button>
+        </div>
+      </div>
+    </form>
+  </script>
+
+
+  <button class="layui-btn btn-exporttable">输出报表</button>
+
+
+
+
+
+  <script src="/assets/lib/layui/layui.all.js "></script>
+  <script src="/assets/lib/jquery.js "></script>
+  <script src="/assets/js/ajaxPre.js "></script>
+  <script src="/assets/lib/template-web.js "></script>
+  <script src="../assets/js/drugin/index.js "></script>
+  <script>
+    layui.use('laydate', function() {
+      var laydate = layui.laydate;
+
+      //常规用法
+      laydate.render({
+        elem: '#test1'
+      });
+    })
+  </script>
+
+
+</body>
+
+</html>
